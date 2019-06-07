@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h5 class="modal-title">Incorrect Credentials</h5>
+  <button type="button" class="close" (click) = "modal.close('close click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>
+    Something went wrong with your login, please verify your email and password. <br>
+    If you dont have and account yet please register with the button below.
+  </p>
+  <div class="row">
+    <div class="col-sm-12 text-center " >
+      <button type="button" class="btn btn-secondary" (click)="goRegister()" >Register</button>
+    </div>
+  </div>
+</div>
+<!-- leave this here just as a reminder of the modal structure using angular -->
+<!--<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click) = "modal.dismiss('Ok click')" >Close</button>
+</div> -->

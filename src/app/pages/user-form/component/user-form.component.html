@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-sm-12 col-md-6 mt-3" id="login-form-container">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup] = "loginForm" (ngSubmit) = "submitForm()">
+          <div class="form-group">
+            <label for="userEmail">Email address</label>
+            <input type="email"
+                   class="form-control"
+                   id="userEmail1"
+                   aria-describedby="emailHelp"
+                   placeholder="Enter email"
+                   formControlName="email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group" id="emailErrors" *ngIf="loginForm.get('email').errors">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="alert alert-warning" role="alert" *ngIf="loginForm.get('email').errors?.pattern && loginForm.get('email').touched">
+                  The email provided is not valid.
+                </div>
+
+                <div class="alert alert-warning" role="alert" *ngIf="loginForm.get('email').errors?.required">
+                  The email is a mandatory field.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="userPassword">Password</label>
+            <input type="password"
+                  class="form-control"
+                  id="userPassword"
+                  placeholder="Password"
+                  formControlName = "password">
+          </div>
+          <div class="form-group" id="userPasswordErrors" *ngIf="loginForm.get('password').errors">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="alert alert-danger" role="alert" *ngIf="loginForm.get('password').errors?.required">
+                  The Password is a mandatory field.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="!isLoginPage">
+            <label for="checkUserPassword">Verify Password</label>
+            <input type="password"
+                   class="form-control"
+                   id="checkUserPassword"
+                   placeholder="Verify Password"
+                   formControlName="checkPassword">
+          </div>
+          <div class="form-group" id="checkUserPasswordErrors" *ngIf="!isLoginPage">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="alert alert-danger" role="alert" *ngIf="loginForm.get('checkPassword').errors?.nomatch">
+                  The Passwords are not matching.
+                </div>
+                <div class="alert alert-warning" role="alert" *ngIf="loginForm.get('checkPassword').errors?.required">
+                  The Verification Field is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-check mb-2" *ngIf="isLoginPage">
+            <input type="checkbox"
+                   class="form-check-input"
+                   id="rememberUser"
+                   formControlName="rememberUser">
+            <label class="form-check-label" for="rememberUser">Remember Me</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
