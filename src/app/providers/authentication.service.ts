@@ -42,7 +42,7 @@ export class AuthenticationService {
 
   logOut(){
     localStorage.removeItem("loggedUser");
-    this.loggedIn.next(true);
+    this.loggedIn.next(false);
   }
 
   isLoggedIn(){
